@@ -1,0 +1,18 @@
+package tennis
+
+type Game struct {
+	score        int
+	player1Score int
+	player2Score int
+}
+
+func (g *Game) Score() string {
+	if g.player1Score == 1 {
+		return "FifteenLove"
+	}
+	return "LoveAll"
+}
+
+func (g *Game) FirstPlayerScore() {
+	g.player1Score++
+}
