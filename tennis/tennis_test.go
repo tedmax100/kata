@@ -61,6 +61,14 @@ func TestFifteenAll(t *testing.T) {
 	GivenSecondPlayerScore(game, 1)
 	assert.Equal(t, game.Score(), "Fifteen All")
 }
+
+func TestThirtyAll(t *testing.T) {
+	game := &Game{}
+	// 玩家1&2 各進1
+	GivenFirstPlayerScore(game, 2)
+	GivenSecondPlayerScore(game, 2)
+	assert.Equal(t, game.Score(), "Thirty All")
+}
 func GivenFirstPlayerScore(game *Game, times int) {
 	for i := 0; i < times; i++ {
 		game.FirstPlayerScore()
