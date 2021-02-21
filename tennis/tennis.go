@@ -4,6 +4,7 @@ var scoreLookup map[int]string
 
 func init() {
 	scoreLookup = map[int]string{
+		0: "Love",
 		1: "Fifteen",
 		2: "Thirty",
 		3: "Forty",
@@ -18,21 +19,9 @@ type Game struct {
 
 func (g *Game) Score() string {
 	// var score1, score2 string
-	if g.player2Score > 0 {
-		return "Love " + scoreLookup[g.player2Score]
+	if g.player1Score != g.player2Score {
+		return scoreLookup[g.player1Score] + " " + scoreLookup[g.player2Score]
 	}
-	/* if g.player2Score == 2 {
-		return "Love Thirty"
-	} */
-	if g.player2Score == 1 {
-		return "Love Fifteen"
-	}
-	if g.player1Score > 0 {
-		score1, _ := scoreLookup[g.player1Score]
-		return score1 + " Love"
-
-	}
-
 	return "Love All"
 }
 
