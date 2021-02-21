@@ -23,6 +23,10 @@ func (g *Game) Score() string {
 		return scoreLookup[g.player1Score] + " " + scoreLookup[g.player2Score]
 	}
 
+	if g.player1Score >= 3 {
+		return "Deuce"
+	}
+
 	return scoreLookup[g.player1Score] + " " + "All"
 }
 
