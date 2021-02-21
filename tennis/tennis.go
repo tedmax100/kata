@@ -33,14 +33,14 @@ func (g *Game) Score() string {
 	if g.IsScoresDifferent() {
 		if g.IsReadyForWin() {
 			if g.IsAdvantage() {
-				return g.AdvPlayer() + spaceStr + advantageStr
+				return g.LeadingPlayer() + spaceStr + advantageStr
 			}
-			return g.AdvPlayer() + spaceStr + winStr
+			return g.LeadingPlayer() + spaceStr + winStr
 		}
 		return scoreLookup[g.player1Score] + spaceStr + scoreLookup[g.player2Score]
 	}
 
-	if g.player1Score >= 3 {
+	if g.IsDeuce() {
 		return deuceStr
 	}
 
@@ -55,7 +55,7 @@ func (g *Game) SecondPlayerScore() {
 	g.player2Score++
 }
 
-func (g *Game) AdvPlayer() string {
+func (g *Game) LeadingPlayer() string {
 	if g.player1Score > g.player2Score {
 		return g.Player1Name
 	}
@@ -72,4 +72,8 @@ func (g *Game) IsReadyForWin() bool {
 
 func (g *Game) IsScoresDifferent() bool {
 	return g.player1Score != g.player2Score
+}
+
+func (g *Game) IsDeuce() bool {
+	return g.player1Score >= 3 && g.player2Score >= 3
 }
