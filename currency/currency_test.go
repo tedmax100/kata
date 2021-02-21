@@ -1,6 +1,7 @@
 package currency
 
 import (
+	"reflect"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -13,6 +14,10 @@ func TestMultiplication(t *testing.T) {
 
 	product = five.Times(3)
 	assert.Equal(t, product.Amount(), 15)
+}
+
+func TestEquality(t *testing.T) {
+	assert.True(t, true, NewDollar(5).Equals(NewDollar(5)))
 }
 
 type Dollar struct {
@@ -31,6 +36,9 @@ func (d Dollar) Amount() int {
 	return d.amount
 }
 
-func (d Dollar) Equal(object interface{}) {
-
+func (d Dollar) Equals(object interface{}) bool {
+	if reflect.TypeOf(d) == reflect.TypeOf(object) {
+		return true
+	}
+	return false
 }
