@@ -7,10 +7,13 @@ type Game struct {
 }
 
 func (g *Game) Score() string {
-	if g.player1Score == 1 {
-		return "FifteenLove"
+	if g.player1Score == 2 {
+		return "Thirty Love"
 	}
-	return "LoveAll"
+	if g.player1Score == 1 {
+		return "Fifteen Love"
+	}
+	return "Love All"
 }
 
 func (g *Game) FirstPlayerScore() {
