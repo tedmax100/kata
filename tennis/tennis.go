@@ -26,7 +26,7 @@ func (g *Game) Score() string {
 
 	if g.player1Score != g.player2Score {
 		if g.player1Score >= 3 {
-			if math.Abs(float64(g.player1Score-g.player2Score)) == 1 {
+			if g.IsAdvantage() {
 				return g.AdvPlayer() + " Adv"
 			}
 		}
@@ -53,4 +53,8 @@ func (g *Game) AdvPlayer() string {
 		return g.Player1Name
 	}
 	return g.Player2Name
+}
+
+func (g *Game) IsAdvantage() bool {
+	return math.Abs(float64(g.player1Score-g.player2Score)) == 1
 }
