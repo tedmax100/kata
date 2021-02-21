@@ -12,6 +12,8 @@ func init() {
 }
 
 type Game struct {
+	Player1Name  string
+	Player2Name  string
 	score        int
 	player1Score int
 	player2Score int

@@ -61,7 +61,13 @@ func TestFifteenAll(t *testing.T) {
 	GivenSecondPlayerScore(game, 1)
 	assert.Equal(t, game.Score(), "Fifteen All")
 }
-
+func TestThirtyAll(t *testing.T) {
+	game := &Game{}
+	// 玩家1&2 各進1
+	GivenFirstPlayerScore(game, 2)
+	GivenSecondPlayerScore(game, 2)
+	assert.Equal(t, game.Score(), "Thirty All")
+}
 func TestDeuce(t *testing.T) {
 	game := &Game{}
 	// 玩家1&2 各進3
@@ -78,13 +84,14 @@ func TestDeuceWhen_4_4(t *testing.T) {
 	assert.Equal(t, game.Score(), "Deuce")
 }
 
-func TestThirtyAll(t *testing.T) {
-	game := &Game{}
-	// 玩家1&2 各進1
-	GivenFirstPlayerScore(game, 2)
-	GivenSecondPlayerScore(game, 2)
-	assert.Equal(t, game.Score(), "Thirty All")
+func TestFirstPlayerAdvantage(t *testing.T) {
+	game := &Game{Player1Name: "Nathan", Player2Name: "Able"}
+	// 玩家1進4球, 玩家2進了3球
+	GivenFirstPlayerScore(game, 4)
+	GivenSecondPlayerScore(game, 3)
+	assert.Equal(t, game.Score(), "Nathan Adv")
 }
+
 func GivenFirstPlayerScore(game *Game, times int) {
 	for i := 0; i < times; i++ {
 		game.FirstPlayerScore()
