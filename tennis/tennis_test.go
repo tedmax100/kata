@@ -46,6 +46,12 @@ func TestLoveThirty(t *testing.T) {
 	assert.Equal(t, game.Score(), "Love Thirty")
 }
 
+func TestLoveForty(t *testing.T) {
+	game := &Game{}
+	// 玩家2 先進2球
+	GivenSecondPlayerScore(game, 3)
+	assert.Equal(t, game.Score(), "Love Forty")
+}
 func GivenFirstPlayerScore(game *Game, times int) {
 	for i := 0; i < times; i++ {
 		game.FirstPlayerScore()
