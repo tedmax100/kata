@@ -100,6 +100,14 @@ func TestSecondPlayerAdvantage(t *testing.T) {
 	assert.Equal(t, game.Score(), "Able Adv")
 }
 
+func TestFirstPlayerWinTheGame(t *testing.T) {
+	game := &Game{Player1Name: "Nathan", Player2Name: "Able"}
+	// 玩家1進4球, 玩家2進了2球
+	GivenFirstPlayerScore(game, 4)
+	GivenSecondPlayerScore(game, 2)
+	assert.Equal(t, game.Score(), "Nathan Win")
+}
+
 func GivenFirstPlayerScore(game *Game, times int) {
 	for i := 0; i < times; i++ {
 		game.FirstPlayerScore()
