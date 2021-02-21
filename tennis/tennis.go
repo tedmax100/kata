@@ -30,7 +30,7 @@ type Game struct {
 }
 
 func (g *Game) Score() string {
-	if g.player1Score != g.player2Score {
+	if g.IsScoresDifferent() {
 		if g.IsReadyForWin() {
 			if g.IsAdvantage() {
 				return g.AdvPlayer() + spaceStr + advantageStr
@@ -68,4 +68,8 @@ func (g *Game) IsAdvantage() bool {
 
 func (g *Game) IsReadyForWin() bool {
 	return g.player1Score > 3 || g.player2Score > 3
+}
+
+func (g *Game) IsScoresDifferent() bool {
+	return g.player1Score != g.player2Score
 }
