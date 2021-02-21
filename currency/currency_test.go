@@ -8,23 +8,25 @@ import (
 
 func TestMultiplication(t *testing.T) {
 	five := NewDollar(5)
-	five.Times(2)
+	product := five.Times(2)
+	assert.Equal(t, product.Amount(), 10)
 
-	assert.Equal(t, five.Amount(), 10)
+	product = five.Times(3)
+	assert.Equal(t, product.Amount(), 15)
 }
 
 type Dollar struct {
 	amount int
 }
 
-func NewDollar(amount int) *Dollar {
-	return &Dollar{amount: amount}
+func NewDollar(amount int) Dollar {
+	return Dollar{amount: amount}
 }
 
-func (d *Dollar) Times(multiplier int) {
-	d.amount *= multiplier
+func (d Dollar) Times(multiplier int) Dollar {
+	return Dollar{amount: d.amount * multiplier}
 }
 
-func (d *Dollar) Amount() int {
+func (d Dollar) Amount() int {
 	return d.amount
 }
