@@ -22,11 +22,20 @@ func init() {
 }
 
 type Game struct {
-	FirstPlayerName   string
-	SecondPlayerName  string
-	score             int
-	firstPlayerScore  int
-	secondPlayerScore int
+	/* FirstPlayerName   string
+	SecondPlayerName  string */
+	score int
+	/* firstPlayerScore  int
+	secondPlayerScore int */
+	firstPlayer  *Player
+	seconfPlayer *Player
+}
+
+func NewGame(firstPlayerName, secondPlayerName string) *Game {
+	return &Game{
+		firstPlayer:  NewPlayer(firstPlayerName),
+		seconfPlayer: NewPlayer(secondPlayerName),
+	}
 }
 
 func (g *Game) Score() string {
@@ -37,43 +46,43 @@ func (g *Game) Score() string {
 			}
 			return g.LeadingPlayer() + spaceStr + winStr
 		}
-		return scoreLookup[g.firstPlayerScore] + spaceStr + scoreLookup[g.secondPlayerScore]
+		return scoreLookup[g.firstPlayer.GetScore()] + spaceStr + scoreLookup[g.seconfPlayer.GetScore()]
 	}
 
 	if g.IsDeuce() {
 		return deuceStr
 	}
 
-	return scoreLookup[g.firstPlayerScore] + spaceStr + allStr
+	return scoreLookup[g.firstPlayer.GetScore()] + spaceStr + allStr
 }
 
 func (g *Game) FirstPlayerScore() {
-	g.firstPlayerScore++
+	g.firstPlayer.WinTheBall()
 }
 
 func (g *Game) SecondPlayerScore() {
-	g.secondPlayerScore++
+	g.seconfPlayer.WinTheBall()
 }
 
 func (g *Game) LeadingPlayer() string {
-	if g.firstPlayerScore > g.secondPlayerScore {
-		return g.FirstPlayerName
+	if g.firstPlayer.GetScore() > g.seconfPlayer.GetScore() {
+		return g.firstPlayer.GetName()
 	}
-	return g.SecondPlayerName
+	return g.seconfPlayer.GetName()
 }
 
 func (g *Game) IsAdvantage() bool {
-	return math.Abs(float64(g.firstPlayerScore-g.secondPlayerScore)) == 1
+	return math.Abs(float64(g.firstPlayer.GetScore()-g.seconfPlayer.GetScore())) == 1
 }
 
 func (g *Game) IsReadyForWin() bool {
-	return g.firstPlayerScore > 3 || g.secondPlayerScore > 3
+	return g.firstPlayer.GetScore() > 3 || g.seconfPlayer.GetScore() > 3
 }
 
 func (g *Game) IsScoresDifferent() bool {
-	return g.firstPlayerScore != g.secondPlayerScore
+	return g.firstPlayer.GetScore() != g.seconfPlayer.GetScore()
 }
 
 func (g *Game) IsDeuce() bool {
-	return g.firstPlayerScore >= 3 && g.secondPlayerScore >= 3
+	return g.firstPlayer.GetScore() >= 3 && g.seconfPlayer.GetScore() >= 3
 }
