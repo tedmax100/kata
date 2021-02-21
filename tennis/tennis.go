@@ -1,5 +1,14 @@
 package tennis
 
+var scoreLookup map[int]string
+
+func init() {
+	scoreLookup = map[int]string{
+		1: "Fifteen",
+		2: "Thirty",
+	}
+}
+
 type Game struct {
 	score        int
 	player1Score int
@@ -7,11 +16,8 @@ type Game struct {
 }
 
 func (g *Game) Score() string {
-	if g.player1Score == 2 {
-		return "Thirty Love"
-	}
-	if g.player1Score == 1 {
-		return "Fifteen Love"
+	if score, ok := scoreLookup[g.player1Score]; ok == true {
+		return score + " Love"
 	}
 	return "Love All"
 }
