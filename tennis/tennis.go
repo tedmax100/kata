@@ -18,6 +18,12 @@ type Game struct {
 
 func (g *Game) Score() string {
 	// var score1, score2 string
+	if g.player2Score > 0 {
+		return "Love " + scoreLookup[g.player2Score]
+	}
+	/* if g.player2Score == 2 {
+		return "Love Thirty"
+	} */
 	if g.player2Score == 1 {
 		return "Love Fifteen"
 	}
