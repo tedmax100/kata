@@ -13,64 +13,54 @@ func TestLoveAll(t *testing.T) {
 
 func TestFifteenLove(t *testing.T) {
 	game := NewGame("Nathan", "Able")
-	// 玩家1 先進1球
 	GivenFirstPlayerScore(game, 1)
 	assert.Equal(t, game.Score(), "Fifteen Love")
 }
 
 func TestThirtyLove(t *testing.T) {
 	game := NewGame("Nathan", "Able")
-	// 玩家1 先進2球
 	GivenFirstPlayerScore(game, 2)
 	assert.Equal(t, game.Score(), "Thirty Love")
 }
 
 func TestFortyLove(t *testing.T) {
 	game := NewGame("Nathan", "Able")
-	// 玩家1 先進3球
 	GivenFirstPlayerScore(game, 3)
 	assert.Equal(t, game.Score(), "Forty Love")
 }
 
 func TestLoveFifteen(t *testing.T) {
 	game := NewGame("Nathan", "Able")
-	// 玩家2 先進1球
 	GivenSecondPlayerScore(game, 1)
 	assert.Equal(t, game.Score(), "Love Fifteen")
 }
 
 func TestLoveThirty(t *testing.T) {
 	game := NewGame("Nathan", "Able")
-	// 玩家2 先進2球
 	GivenSecondPlayerScore(game, 2)
 	assert.Equal(t, game.Score(), "Love Thirty")
 }
 
 func TestLoveForty(t *testing.T) {
 	game := NewGame("Nathan", "Able")
-	// 玩家2 先進2球
-
 	GivenSecondPlayerScore(game, 3)
 	assert.Equal(t, game.Score(), "Love Forty")
 }
 
 func TestFifteenAll(t *testing.T) {
 	game := NewGame("Nathan", "Able")
-	// 玩家1&2 各進1
 	GivenFirstPlayerScore(game, 1)
 	GivenSecondPlayerScore(game, 1)
 	assert.Equal(t, game.Score(), "Fifteen All")
 }
 func TestThirtyAll(t *testing.T) {
 	game := NewGame("Nathan", "Able")
-	// 玩家1&2 各進1
 	GivenFirstPlayerScore(game, 2)
 	GivenSecondPlayerScore(game, 2)
 	assert.Equal(t, game.Score(), "Thirty All")
 }
 func TestDeuce(t *testing.T) {
-	game := NewGame("Nathan", "Able")
-	// 玩家1&2 各進3
+	game := NewGame("Nathan", "Able")3
 	GivenFirstPlayerScore(game, 3)
 	GivenSecondPlayerScore(game, 3)
 	assert.Equal(t, game.Score(), "Deuce")
@@ -78,7 +68,6 @@ func TestDeuce(t *testing.T) {
 
 func TestDeuceWhen_4_4(t *testing.T) {
 	game := NewGame("Nathan", "Able")
-	// 玩家1&2 各進4
 	GivenFirstPlayerScore(game, 4)
 	GivenSecondPlayerScore(game, 4)
 	assert.Equal(t, game.Score(), "Deuce")
@@ -86,7 +75,6 @@ func TestDeuceWhen_4_4(t *testing.T) {
 
 func TestFirstPlayerAdvantage(t *testing.T) {
 	game := NewGame("Nathan", "Able")
-	// 玩家1進4球, 玩家2進了3球
 	GivenFirstPlayerScore(game, 4)
 	GivenSecondPlayerScore(game, 3)
 	assert.Equal(t, game.Score(), "Nathan Adv")
@@ -94,7 +82,6 @@ func TestFirstPlayerAdvantage(t *testing.T) {
 
 func TestSecondPlayerAdvantage(t *testing.T) {
 	game := NewGame("Nathan", "Able")
-	// 玩家1進3球, 玩家2進了4球
 	GivenFirstPlayerScore(game, 3)
 	GivenSecondPlayerScore(game, 4)
 	assert.Equal(t, game.Score(), "Able Adv")
@@ -102,7 +89,6 @@ func TestSecondPlayerAdvantage(t *testing.T) {
 
 func TestFirstPlayerWinTheGame(t *testing.T) {
 	game := NewGame("Nathan", "Able")
-	// 玩家1進4球, 玩家2進了2球
 	GivenFirstPlayerScore(game, 4)
 	GivenSecondPlayerScore(game, 2)
 	assert.Equal(t, game.Score(), "Nathan Win")
@@ -110,7 +96,6 @@ func TestFirstPlayerWinTheGame(t *testing.T) {
 
 func TestSecondPlayerWinTheGame(t *testing.T) {
 	game := NewGame("Nathan", "Able")
-	// 玩家1進2球, 玩家2進了4球
 	GivenFirstPlayerScore(game, 2)
 	GivenSecondPlayerScore(game, 4)
 	assert.Equal(t, game.Score(), "Able Win")
