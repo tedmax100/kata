@@ -22,6 +22,9 @@ func (g *Game) Score() string {
 	if g.player1Score != g.player2Score {
 		return scoreLookup[g.player1Score] + " " + scoreLookup[g.player2Score]
 	}
+	if g.player1Score == 1 {
+		return "Fifteen All"
+	}
 	return "Love All"
 }
 
