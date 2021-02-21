@@ -56,11 +56,11 @@ func (g *Game) Score() string {
 	return scoreLookup[g.firstPlayer.GetScore()] + spaceStr + allStr
 }
 
-func (g *Game) FirstPlayerScore() {
+func (g *Game) FirstPlayerWinTheBall() {
 	g.firstPlayer.WinTheBall()
 }
 
-func (g *Game) SecondPlayerScore() {
+func (g *Game) SecondPlayerWinTheBall() {
 	g.seconfPlayer.WinTheBall()
 }
 
