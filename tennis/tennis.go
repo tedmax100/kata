@@ -22,11 +22,6 @@ func init() {
 }
 
 type Game struct {
-	/* FirstPlayerName   string
-	SecondPlayerName  string
-	score int
-	firstPlayerScore  int
-	secondPlayerScore int */
 	firstPlayer  *Player
 	seconfPlayer *Player
 }
