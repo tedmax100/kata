@@ -2,7 +2,7 @@ TDD ＆ Kata練習
 -----------------
 
 Todo :
-- [v] Tennis
+- [x] Tennis
 - [ ] KentBeck-Currency
 - [ ] Bowling
 - [ ] Yatzy
