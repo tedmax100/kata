@@ -60,7 +60,7 @@ func TestThirtyAll(t *testing.T) {
 	assert.Equal(t, game.Score(), "Thirty All")
 }
 func TestDeuce(t *testing.T) {
-	game := NewGame("Nathan", "Able")3
+	game := NewGame("Nathan", "Able")
 	GivenFirstPlayerScore(game, 3)
 	GivenSecondPlayerScore(game, 3)
 	assert.Equal(t, game.Score(), "Deuce")
