@@ -103,12 +103,12 @@ func TestSecondPlayerWinTheGame(t *testing.T) {
 
 func GivenFirstPlayerScore(game *Game, times int) {
 	for i := 0; i < times; i++ {
-		game.FirstPlayerScore()
+		game.FirstPlayerWinTheBall()
 	}
 }
 
 func GivenSecondPlayerScore(game *Game, times int) {
 	for i := 0; i < times; i++ {
-		game.SecondPlayerScore()
+		game.SecondPlayerWinTheBall()
 	}
 }
