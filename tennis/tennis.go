@@ -27,10 +27,7 @@ func (g *Game) Score() string {
 	if g.player1Score != g.player2Score {
 		if g.player1Score >= 3 {
 			if math.Abs(float64(g.player1Score-g.player2Score)) == 1 {
-				if g.player1Score > g.player2Score {
-					return g.Player1Name + " Adv"
-				}
-				return g.Player2Name + " Adv"
+				return g.AdvPlayer() + " Adv"
 			}
 		}
 		return scoreLookup[g.player1Score] + " " + scoreLookup[g.player2Score]
@@ -49,4 +46,11 @@ func (g *Game) FirstPlayerScore() {
 
 func (g *Game) SecondPlayerScore() {
 	g.player2Score++
+}
+
+func (g *Game) AdvPlayer() string {
+	if g.player1Score > g.player2Score {
+		return g.Player1Name
+	}
+	return g.Player2Name
 }
