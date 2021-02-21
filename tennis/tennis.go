@@ -25,9 +25,12 @@ func (g *Game) Score() string {
 	// var score1, score2 string
 
 	if g.player1Score != g.player2Score {
-		if g.player1Score > 3 {
+		if g.player1Score >= 3 {
 			if math.Abs(float64(g.player1Score-g.player2Score)) == 1 {
-				return g.Player1Name + " Adv"
+				if g.player1Score > g.player2Score {
+					return g.Player1Name + " Adv"
+				}
+				return g.Player2Name + " Adv"
 			}
 		}
 		return scoreLookup[g.player1Score] + " " + scoreLookup[g.player2Score]
