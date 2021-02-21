@@ -6,6 +6,7 @@ func init() {
 	scoreLookup = map[int]string{
 		1: "Fifteen",
 		2: "Thirty",
+		3: "Forty",
 	}
 }
 
@@ -16,12 +17,23 @@ type Game struct {
 }
 
 func (g *Game) Score() string {
-	if score, ok := scoreLookup[g.player1Score]; ok == true {
-		return score + " Love"
+	// var score1, score2 string
+	if g.player2Score == 1 {
+		return "Love Fifteen"
 	}
+	if g.player1Score > 0 {
+		score1, _ := scoreLookup[g.player1Score]
+		return score1 + " Love"
+
+	}
+
 	return "Love All"
 }
 
 func (g *Game) FirstPlayerScore() {
 	g.player1Score++
+}
+
+func (g *Game) SecondPlayerScore() {
+	g.player2Score++
 }
