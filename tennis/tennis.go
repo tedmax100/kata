@@ -22,11 +22,11 @@ func init() {
 }
 
 type Game struct {
-	Player1Name  string
-	Player2Name  string
-	score        int
-	player1Score int
-	player2Score int
+	FirstPlayerName   string
+	SecondPlayerName  string
+	score             int
+	firstPlayerScore  int
+	secondPlayerScore int
 }
 
 func (g *Game) Score() string {
@@ -37,43 +37,43 @@ func (g *Game) Score() string {
 			}
 			return g.LeadingPlayer() + spaceStr + winStr
 		}
-		return scoreLookup[g.player1Score] + spaceStr + scoreLookup[g.player2Score]
+		return scoreLookup[g.firstPlayerScore] + spaceStr + scoreLookup[g.secondPlayerScore]
 	}
 
 	if g.IsDeuce() {
 		return deuceStr
 	}
 
-	return scoreLookup[g.player1Score] + spaceStr + allStr
+	return scoreLookup[g.firstPlayerScore] + spaceStr + allStr
 }
 
 func (g *Game) FirstPlayerScore() {
-	g.player1Score++
+	g.firstPlayerScore++
 }
 
 func (g *Game) SecondPlayerScore() {
-	g.player2Score++
+	g.secondPlayerScore++
 }
 
 func (g *Game) LeadingPlayer() string {
-	if g.player1Score > g.player2Score {
-		return g.Player1Name
+	if g.firstPlayerScore > g.secondPlayerScore {
+		return g.FirstPlayerName
 	}
-	return g.Player2Name
+	return g.SecondPlayerName
 }
 
 func (g *Game) IsAdvantage() bool {
-	return math.Abs(float64(g.player1Score-g.player2Score)) == 1
+	return math.Abs(float64(g.firstPlayerScore-g.secondPlayerScore)) == 1
 }
 
 func (g *Game) IsReadyForWin() bool {
-	return g.player1Score > 3 || g.player2Score > 3
+	return g.firstPlayerScore > 3 || g.secondPlayerScore > 3
 }
 
 func (g *Game) IsScoresDifferent() bool {
-	return g.player1Score != g.player2Score
+	return g.firstPlayerScore != g.secondPlayerScore
 }
 
 func (g *Game) IsDeuce() bool {
-	return g.player1Score >= 3 && g.player2Score >= 3
+	return g.firstPlayerScore >= 3 && g.secondPlayerScore >= 3
 }

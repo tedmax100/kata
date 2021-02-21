@@ -85,7 +85,7 @@ func TestDeuceWhen_4_4(t *testing.T) {
 }
 
 func TestFirstPlayerAdvantage(t *testing.T) {
-	game := &Game{Player1Name: "Nathan", Player2Name: "Able"}
+	game := &Game{FirstPlayerName: "Nathan", SecondPlayerName: "Able"}
 	// 玩家1進4球, 玩家2進了3球
 	GivenFirstPlayerScore(game, 4)
 	GivenSecondPlayerScore(game, 3)
@@ -93,7 +93,7 @@ func TestFirstPlayerAdvantage(t *testing.T) {
 }
 
 func TestSecondPlayerAdvantage(t *testing.T) {
-	game := &Game{Player1Name: "Nathan", Player2Name: "Able"}
+	game := &Game{FirstPlayerName: "Nathan", SecondPlayerName: "Able"}
 	// 玩家1進3球, 玩家2進了4球
 	GivenFirstPlayerScore(game, 3)
 	GivenSecondPlayerScore(game, 4)
@@ -101,7 +101,7 @@ func TestSecondPlayerAdvantage(t *testing.T) {
 }
 
 func TestFirstPlayerWinTheGame(t *testing.T) {
-	game := &Game{Player1Name: "Nathan", Player2Name: "Able"}
+	game := &Game{FirstPlayerName: "Nathan", SecondPlayerName: "Able"}
 	// 玩家1進4球, 玩家2進了2球
 	GivenFirstPlayerScore(game, 4)
 	GivenSecondPlayerScore(game, 2)
@@ -109,7 +109,7 @@ func TestFirstPlayerWinTheGame(t *testing.T) {
 }
 
 func TestSecondPlayerWinTheGame(t *testing.T) {
-	game := &Game{Player1Name: "Nathan", Player2Name: "Able"}
+	game := &Game{FirstPlayerName: "Nathan", SecondPlayerName: "Able"}
 	// 玩家1進2球, 玩家2進了4球
 	GivenFirstPlayerScore(game, 2)
 	GivenSecondPlayerScore(game, 4)
