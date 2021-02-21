@@ -35,20 +35,25 @@ func TestFortyLove(t *testing.T) {
 func TestLoveFifteen(t *testing.T) {
 	game := &Game{}
 	// 玩家2 先進1球
-	game.SecondPlayerScore()
+	GivenSecondPlayerScore(game, 1)
 	assert.Equal(t, game.Score(), "Love Fifteen")
 }
 
 func TestLoveThirty(t *testing.T) {
 	game := &Game{}
 	// 玩家2 先進2球
-	game.SecondPlayerScore()
-	game.SecondPlayerScore()
+	GivenSecondPlayerScore(game, 2)
 	assert.Equal(t, game.Score(), "Love Thirty")
 }
 
 func GivenFirstPlayerScore(game *Game, times int) {
 	for i := 0; i < times; i++ {
 		game.FirstPlayerScore()
+	}
+}
+
+func GivenSecondPlayerScore(game *Game, times int) {
+	for i := 0; i < times; i++ {
+		game.SecondPlayerScore()
 	}
 }
