@@ -84,5 +84,5 @@ func (g *Game) IsScoresDifferent() bool {
 }
 
 func (g *Game) IsDeuce() bool {
-	return g.firstPlayer.GetScore() >= 3 && g.seconfPlayer.GetScore() >= 3
+	return g.firstPlayer.GetScore() >= 3 && g.seconfPlayer.GetScore() >= 3 && g.firstPlayer.GetScore() == g.seconfPlayer.GetScore()
 }
