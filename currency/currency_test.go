@@ -24,3 +24,8 @@ func TestEquality(t *testing.T) {
 	assert.True(t, NewDollar(5).Equals(NewDollar(5)))
 	assert.False(t, NewDollar(5).Equals(NewDollar(6)))
 }
+
+func TestCurrency(t *testing.T) {
+	assert.Equal(t, "USD", NewDollar(1).Currency())
+	assert.Equal(t, "CHF", NewFranc(1).Currency())
+}

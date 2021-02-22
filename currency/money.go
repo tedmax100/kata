@@ -7,10 +7,12 @@ import (
 type Money interface {
 	Times(multiplier int) Money
 	Amount() int
+	Currency() string
 }
 
 type AbstractMoney struct {
-	amount int
+	amount   int
+	currency string
 	Money
 }
 
@@ -33,4 +35,8 @@ func (m AbstractMoney) Equals(object interface{}) bool {
 	amount := moneyField.FieldByName("amount").Int() */
 	amount := members.FieldByName("amount").Int()
 	return m.amount == int(amount) && reflect.TypeOf(m) == reflect.TypeOf(object)
+}
+
+func (m AbstractMoney) Currency() string {
+	return m.currency
 }
