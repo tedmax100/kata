@@ -1,15 +1,15 @@
 package currency
 
 type Dollar struct {
-	amount int
+	Money
 }
 
 func NewDollar(amount int) Dollar {
-	return Dollar{amount: amount}
+	return Dollar{Money{amount: amount}}
 }
 
 func (d Dollar) Times(multiplier int) Dollar {
-	return Dollar{amount: d.amount * multiplier}
+	return Dollar{Money{amount: d.amount * multiplier}}
 }
 
 func (d Dollar) Amount() int {
