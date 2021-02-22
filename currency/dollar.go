@@ -15,8 +15,3 @@ func (d Dollar) Times(multiplier int) Dollar {
 func (d Dollar) Amount() int {
 	return d.amount
 }
-
-/* func (d Dollar) Equals(object interface{}) bool {
-	return d.amount == object.(Dollar).amount
-}
-*/
