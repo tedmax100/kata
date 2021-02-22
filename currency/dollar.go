@@ -16,6 +16,7 @@ func (d Dollar) Amount() int {
 	return d.amount
 }
 
-func (d Dollar) Equals(object interface{}) bool {
+/* func (d Dollar) Equals(object interface{}) bool {
 	return d.amount == object.(Dollar).amount
 }
+*/

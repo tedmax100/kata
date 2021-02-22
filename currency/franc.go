@@ -16,6 +16,6 @@ func (f Franc) Amount() int {
 	return f.amount
 }
 
-func (f Franc) Equals(object interface{}) bool {
+/* func (f Franc) Equals(object interface{}) bool {
 	return f.amount == object.(Franc).amount
-}
+} */
