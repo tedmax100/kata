@@ -16,5 +16,5 @@ func (m Money) Equals(object interface{}) bool {
 	members := reflect.ValueOf(object)
 	moneyField := members.FieldByName("Money")
 	amount := moneyField.FieldByName("amount").Int()
-	return m.amount == int(amount)
+	return m.amount == int(amount) && reflect.TypeOf(m) == moneyField.Type()
 }
