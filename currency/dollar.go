@@ -1,17 +1,18 @@
 package currency
 
 type Dollar struct {
-	Money
+	AbstractMoney
 }
 
-func NewDollar(amount int) Dollar {
-	return Dollar{Money{amount: amount}}
+func NewDollar(amount int) AbstractMoney {
+	return AbstractMoney{amount: amount}
 }
 
-func (d Dollar) Times(multiplier int) Dollar {
+/* func (d Dollar) Times(multiplier int) Dollar {
 	return Dollar{Money{amount: d.amount * multiplier}}
 }
-
-func (d Dollar) Amount() int {
+*/
+/* func (d Dollar) Amount() int {
 	return d.amount
 }
+*/
