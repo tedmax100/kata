@@ -48,3 +48,7 @@ func (m Money) Currency() string {
 func (m Money) String() string {
 	return fmt.Sprintf("%d %s", m.amount, m.currency)
 }
+
+func (m Money) Plus(addend Money) Money {
+	return Money{amount: m.amount + addend.amount, currency: m.currency}
+}

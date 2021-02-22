@@ -35,3 +35,8 @@ func TestMoneyString(t *testing.T) {
 	assert.Equal(t, "1 USD", Dollar(1).String())
 	assert.Equal(t, "1 CHF", Frac(1).String())
 }
+
+func TestSimpleAddition(t *testing.T) {
+	sum := Dollar(5).Plus(Dollar(5))
+	assert.Equal(t, Dollar(10), sum)
+}
