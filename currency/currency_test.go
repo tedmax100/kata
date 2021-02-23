@@ -49,20 +49,20 @@ func TestSimpleAddition(t *testing.T) {
 
 func TestReduceSum(t *testing.T) {
 	sum := NewSum(Dollar(3), Dollar(4))
-	bank := Bank{}
+	bank := NewBank()
 	result := bank.Reduce(sum, "USD")
 	assert.Equal(t, Dollar(7), result)
 }
 
 func TestReduceMoney(t *testing.T) {
-	bank := Bank{}
+	bank := NewBank()
 	result := bank.Reduce(Dollar(1), "USD")
 	assert.Equal(t, Dollar(1), result)
 }
 
 func TestReduceMoneyDifferentCurrency(t *testing.T) {
-	bank := Bank{}
-	//bank.AddRage("CHF", "USD", 2)
+	bank := NewBank()
+	bank.AddRate("CHF", "USD", 2)
 	result := bank.Reduce(Frac(2), "USD")
 	assert.Equal(t, Dollar(1), result)
 }
