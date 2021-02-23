@@ -66,3 +66,7 @@ func TestReduceMoneyDifferentCurrency(t *testing.T) {
 	result := bank.Reduce(Frac(2), "USD")
 	assert.Equal(t, Dollar(1), result)
 }
+
+func TestArrayEquals(t *testing.T) {
+	assert.Equal(t, []string{"abc"}, []string{"abc"})
+}
