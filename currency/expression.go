@@ -1,6 +1,7 @@
 package currency
 
 type IExpression interface {
+	Reduce(string) IMoney
 }
 
 type Sum struct {
