@@ -55,8 +55,10 @@ func (m Money) Plus(addend IMoney) IMoney {
 	return Money{amount: m.amount + addend.(Money).amount, currency: m.currency}
 }
 
-func (m Money) Reduce(to string) IMoney {
-	return m
+func (m Money) Reduce(bank Bank, to string) IMoney {
+	rate := bank.Rate(m.currency, to)
+
+	return Money{amount: m.amount / rate, currency: to}
 }
 
 /* func (m Money) Plus(addend IMoney) IExpression {

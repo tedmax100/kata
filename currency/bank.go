@@ -7,5 +7,12 @@ func (b Bank) Reduce(source IExpression, to string) IMoney {
 		return source.(Money)
 	} */
 	//sum := source.(Sum)
-	return source.Reduce(to) //sum.Reduce(to)
+	return source.Reduce(b, to) //sum.Reduce(to)
+}
+
+func (b Bank) Rate(from, to string) int {
+	if from == "CHF" {
+		return 2
+	}
+	return 1
 }
