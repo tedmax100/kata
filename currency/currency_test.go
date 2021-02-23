@@ -70,3 +70,14 @@ func TestReduceMoneyDifferentCurrency(t *testing.T) {
 func TestArrayEquals(t *testing.T) {
 	assert.Equal(t, []string{"abc"}, []string{"abc"})
 }
+
+func TestMixedsAddition(t *testing.T) {
+	fiveBucks := Dollar(5)
+	tenFracs := Frac(10)
+
+	bank := NewBank()
+	bank.AddRate("CHF", "USD", 2)
+
+	result := bank.Reduce(fiveBucks.Plus(tenFracs), "USD")
+	assert.Equal(t, Dollar(10), result)
+}
