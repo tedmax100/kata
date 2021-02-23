@@ -39,4 +39,7 @@ func TestMoneyString(t *testing.T) {
 func TestSimpleAddition(t *testing.T) {
 	sum := Dollar(5).Plus(Dollar(5))
 	assert.Equal(t, Dollar(10), sum)
+
+	// reduced Bank := Bank.Reduce(sum, "USD")
+	// assert.Equal(t, Dollar(10), reduced)
 }
