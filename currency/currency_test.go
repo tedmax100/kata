@@ -40,14 +40,16 @@ func TestSimpleAddition(t *testing.T) {
 	sum := Dollar(5).Plus(Dollar(5))
 	assert.Equal(t, Dollar(10), sum)
 
-	var five IMoney = Dollar(5)
-	bank := Bank{}
-	sum = five.Plus(five)
-	reduced := bank.Reduce(sum, "USD")
-	assert.Equal(t, Dollar(10), reduced)
 	// reduced Money := Bank.Reduce(sum, "USD")
 	// assert.Equal(t, Dollar(10), reduced)
 	//var five IMoney = Dollar(5)
 	//sum := five.Plus(five)
 
+}
+
+func TestReduceSum(t *testing.T) {
+	sum := NewSum(Dollar(3), Dollar(4))
+	bank := Bank{}
+	result := bank.Reduce(sum, "USD")
+	assert.Equal(t, Dollar(7), result)
 }

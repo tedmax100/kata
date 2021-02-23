@@ -12,6 +12,7 @@ type IMoney interface {
 	Equals(interface{}) bool
 	String() string
 	Plus(IMoney) IMoney
+	//Plus(addend IMoney) IExpression
 }
 
 type Money struct {
@@ -52,3 +53,7 @@ func (m Money) String() string {
 func (m Money) Plus(addend IMoney) IMoney {
 	return Money{amount: m.amount + addend.(Money).amount, currency: m.currency}
 }
+
+/* func (m Money) Plus(addend IMoney) IExpression {
+	return NewSum(m, addend)
+} */

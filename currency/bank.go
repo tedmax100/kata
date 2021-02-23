@@ -3,5 +3,6 @@ package currency
 type Bank struct{}
 
 func (b Bank) Reduce(source IExpression, to string) IMoney {
-	return Dollar(10)
+	sum := source.(Sum)
+	return sum.Reduce(to)
 }
