@@ -72,12 +72,12 @@ func TestArrayEquals(t *testing.T) {
 }
 
 func TestMixedsAddition(t *testing.T) {
-	fiveBucks := Dollar(5)
-	tenFracs := Frac(10)
+	var fiveBucks IMoney = Dollar(5)
+	var tenFracs IMoney = Frac(10)
 
-	bank := NewBank()
+	var bank Bank = NewBank()
 	bank.AddRate("CHF", "USD", 2)
 
-	result := bank.Reduce(fiveBucks.Plus(tenFracs), "USD")
+	var result IMoney = bank.Reduce(fiveBucks.Plus(tenFracs), "USD")
 	assert.Equal(t, Dollar(10), result)
 }
