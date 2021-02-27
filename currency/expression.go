@@ -2,6 +2,7 @@ package currency
 
 type IExpression interface {
 	Reduce(Bank, string) IMoney
+	Plus(IExpression) IExpression
 }
 
 type Sum struct {
@@ -17,6 +18,10 @@ func (s Sum) Reduce(bank Bank, to string) IMoney {
 	amount := s.augend.Reduce(bank, to).Amount() + s.addend.Reduce(bank, to).Amount()
 	// amount := s.augend.Amount() + s.addend.Amount()
 	return Money{amount: amount, currency: to}
+}
+
+func (s Sum) Plus(IExpression) IExpression {
+	return nil
 }
 
 /* func Plus(addend IMoney) IExpression {

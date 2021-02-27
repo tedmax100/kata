@@ -76,8 +76,8 @@ func TestArrayEquals(t *testing.T) {
 }
 
 func TestMixedsAddition(t *testing.T) {
-	var fiveBucks IMoney = Dollar(5)
-	var tenFracs IMoney = Frac(10)
+	var fiveBucks IExpression = Dollar(5)
+	var tenFracs IExpression = Frac(10)
 
 	var bank Bank = NewBank()
 	bank.AddRate("CHF", "USD", 2)
