@@ -6,7 +6,7 @@ import (
 )
 
 type IMoney interface {
-	Times(int) IMoney
+	Times(int) IExpression
 	Amount() int
 	Currency() string
 	Equals(interface{}) bool
@@ -33,7 +33,7 @@ func (m Money) Amount() int {
 	return m.amount
 }
 
-func (m Money) Times(multiplier int) IMoney {
+func (m Money) Times(multiplier int) IExpression {
 	return Money{amount: m.amount * multiplier, currency: m.currency}
 }
 
