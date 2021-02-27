@@ -20,8 +20,8 @@ func (s Sum) Reduce(bank Bank, to string) IMoney {
 	return Money{amount: amount, currency: to}
 }
 
-func (s Sum) Plus(IExpression) IExpression {
-	return nil
+func (s Sum) Plus(addend IExpression) IExpression {
+	return NewSum(s, addend)
 }
 
 /* func Plus(addend IMoney) IExpression {

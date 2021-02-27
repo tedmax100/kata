@@ -85,3 +85,14 @@ func TestMixedsAddition(t *testing.T) {
 	var result IMoney = bank.Reduce(fiveBucks.Plus(tenFracs), "USD")
 	assert.Equal(t, Dollar(10), result)
 }
+
+func TestSumPlusMoney(t *testing.T) {
+	var fiveBucks IExpression = Dollar(5)
+	var tenFracs IExpression = Frac(10)
+
+	var bank Bank = NewBank()
+	bank.AddRate("CHF", "USD", 2)
+	var sum IExpression = NewSum(fiveBucks, tenFracs).Plus(fiveBucks)
+	var result IMoney = bank.Reduce(sum, "USD")
+	assert.Equal(t, Dollar(15), result)
+}
