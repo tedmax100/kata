@@ -23,6 +23,8 @@ jobs:
       run: go get github.com/mattn/goveralls
     - name: Send coverage
       uses: shogo82148/actions-goveralls@v1
+      with:
+        path-to-profile: covprofile
       env:
         COVERALLS_TOKEN: UoxMhB5BZEUI3Thrmou5RjAuDWoTWXMf8
       run: goveralls -coverprofile=covprofile -service=github
