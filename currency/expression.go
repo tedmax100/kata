@@ -5,16 +5,17 @@ type IExpression interface {
 }
 
 type Sum struct {
-	augend IMoney
-	addend IMoney
+	augend IExpression
+	addend IExpression
 }
 
-func NewSum(augend, addend IMoney) IExpression {
+func NewSum(augend, addend IExpression) IExpression {
 	return Sum{augend: augend, addend: addend}
 }
 
 func (s Sum) Reduce(bank Bank, to string) IMoney {
-	amount := s.augend.Amount() + s.addend.Amount()
+	amount := s.augend.Reduce(bank, to).Amount() + s.addend.Reduce(bank, to).Amount()
+	// amount := s.augend.Amount() + s.addend.Amount()
 	return Money{amount: amount, currency: to}
 }
 
