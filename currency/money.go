@@ -11,7 +11,7 @@ type IMoney interface {
 	Currency() string
 	Equals(interface{}) bool
 	String() string
-	Plus(IMoney) IExpression
+	Plus(IExpression) IExpression
 	IExpression
 	//Plus(addend IMoney) IExpression
 }
@@ -51,7 +51,7 @@ func (m Money) String() string {
 	return fmt.Sprintf("%d %s", m.amount, m.currency)
 }
 
-func (m Money) Plus(addend IMoney) IExpression {
+func (m Money) Plus(addend IExpression) IExpression {
 	return NewSum(m, addend)
 	//return Money{amount: m.amount + addend.(Money).amount, currency: m.currency}
 }
