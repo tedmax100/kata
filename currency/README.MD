@@ -1,9 +1,7 @@
 Test-Driven Development: By Example
 -----------------
 
-## Chap 1 - ?
+## Chap 1 - 17
 問題紀錄
 ```
-Chap 15
-混合幣別
 ```
