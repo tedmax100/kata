@@ -4,7 +4,7 @@ TDD ＆ Kata練習
 
 Todo :
 - [x] Tennis
-- [ ] KentBeck-Currency
+- [x] KentBeck-Currency
 - [ ] Bowling
 - [ ] Yatzy
 - [ ] MineSweeper
