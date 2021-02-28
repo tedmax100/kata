@@ -40,3 +40,12 @@ func rollSpare(game *Game) {
 	game.Roll(5)
 	game.Roll(5)
 }
+
+func TestOneStrike(t *testing.T) {
+	var game *Game = NewGame()
+	game.Roll(10) // strike
+	game.Roll(3)
+	game.Roll(4)
+	rollMany(game, 16, 0)
+	assert.Equal(t, 24, game.Score())
+}
