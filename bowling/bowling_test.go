@@ -53,3 +53,9 @@ func TestOneStrike(t *testing.T) {
 func rollStrike(game *Game) {
 	game.Roll(10)
 }
+
+func TestPerfectGame(t *testing.T) {
+	var game *Game = NewGame()
+	rollMany(game, 12, 10)
+	assert.Equal(t, 300, game.Score())
+}
