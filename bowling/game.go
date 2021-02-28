@@ -23,7 +23,7 @@ func (g *Game) Score() int {
 	var score int = 0
 	var frameIdx int = 0 // i is a bad name for this variable
 	for frame := 0; frame < 10; frame++ {
-		if g.rolls[frameIdx]+g.rolls[frameIdx+1] == 10 { //spare; ugly comment in conditional
+		if g.isSpare(frameIdx) {
 			score += 10 + g.rolls[frameIdx+2]
 			frameIdx += 2
 		} else {
@@ -31,8 +31,10 @@ func (g *Game) Score() int {
 			score += g.rolls[frameIdx] + g.rolls[frameIdx+1]
 			frameIdx += 2
 		}
-
 	}
-
 	return score
+}
+
+func (g *Game) isSpare(frameIdx int) bool {
+	return g.rolls[frameIdx]+g.rolls[frameIdx+1] == 10
 }
