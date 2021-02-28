@@ -21,15 +21,15 @@ func (g *Game) Roll(pins int) {
 
 func (g *Game) Score() int {
 	var score int = 0
-	var i int = 0
+	var frameIdx int = 0 // i is a bad name for this variable
 	for frame := 0; frame < 10; frame++ {
-		if g.rolls[i]+g.rolls[i+1] == 10 { //spare
-			score += 10 + g.rolls[i+2]
-			i += 2
+		if g.rolls[frameIdx]+g.rolls[frameIdx+1] == 10 { //spare; ugly comment in conditional
+			score += 10 + g.rolls[frameIdx+2]
+			frameIdx += 2
 		} else {
 
-			score += g.rolls[i] + g.rolls[i+1]
-			i += 2
+			score += g.rolls[frameIdx] + g.rolls[frameIdx+1]
+			frameIdx += 2
 		}
 
 	}
