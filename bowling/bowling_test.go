@@ -27,3 +27,12 @@ func rollMany(game *Game, n, pins int) {
 		game.Roll(pins)
 	}
 }
+
+func TestOneSpare(t *testing.T) {
+	var game *Game = NewGame()
+	game.Roll(5)
+	game.Roll(5) //Spare occured
+	game.Roll(3)
+	rollMany(game, 17, 0)
+	assert.Equal(t, 16, game.Score())
+}

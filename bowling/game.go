@@ -11,10 +11,10 @@ func NewGame() *Game {
 }
 
 func (g *Game) Roll(pins int) {
-	g.score += pins
+	g.score += pins // roll職責錯誤, 它不應該去累加score
 	return
 }
 
 func (g *Game) Score() int {
-	return g.score
+	return g.score //score() 反而沒負責計算分數
 }
