@@ -23,7 +23,7 @@ func (g *Game) Score() int {
 	var score int = 0
 	var frameIdx int = 0 // i is a bad name for this variable
 	for frame := 0; frame < 10; frame++ {
-		if g.rolls[frameIdx] == 10 { // strike
+		if g.isStrike(frameIdx) {
 			score += 10 + g.getStrikeBonus(frameIdx)
 			frameIdx++
 		} else if g.isSpare(frameIdx) {
@@ -35,6 +35,10 @@ func (g *Game) Score() int {
 		}
 	}
 	return score
+}
+
+func (g *Game) isStrike(frameIdx int) bool {
+	return g.rolls[frameIdx] == 10
 }
 
 func (g *Game) sumOfBallsInFrame(frameIdx int) int {
