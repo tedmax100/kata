@@ -59,3 +59,17 @@ func TestTwoPairs(t *testing.T) {
 	assert.Equal(t, 0, rule.TwoPairs([]int{1, 1, 2, 1, 1}))
 	assert.Equal(t, 16, rule.TwoPairs([]int{3, 3, 5, 4, 5}))
 }
+
+func TestThreeOfAKind(t *testing.T) {
+	var rule *Rule = &Rule{}
+	assert.Equal(t, 9, rule.ThreeOfAKind([]int{3, 3, 3, 4, 5}))
+	assert.Equal(t, 15, rule.ThreeOfAKind([]int{5, 3, 5, 4, 5}))
+	assert.Equal(t, 0, rule.ThreeOfAKind([]int{5, 3, 4, 4, 5}))
+}
+
+func TestFourOfAKind(t *testing.T) {
+	var rule *Rule = &Rule{}
+	assert.Equal(t, 8, rule.FourOfAKind([]int{2, 2, 2, 2, 5}))
+	assert.Equal(t, 8, rule.FourOfAKind([]int{2, 2, 2, 2, 2}))
+	assert.Equal(t, 0, rule.FourOfAKind([]int{2, 2, 2, 5, 5}))
+}

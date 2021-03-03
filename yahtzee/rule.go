@@ -101,3 +101,59 @@ func (r *Rule) TwoPairs(dices []int) int {
 	}
 	return result
 }
+
+func (r *Rule) ThreeOfAKind(dices []int) int {
+	var pairs map[int]int = make(map[int]int)
+	var number int = 0
+	for idx := range dices {
+		if _, exist := pairs[dices[idx]]; exist {
+			pairs[dices[idx]]++
+		} else {
+			pairs[dices[idx]] = 1
+		}
+	}
+
+	// remove item of pairs that value = 1
+	for number := range pairs {
+		if pairs[number] < 3 {
+			delete(pairs, number)
+		}
+	}
+
+	if len(pairs) < 1 {
+		return 0
+	}
+
+	for pair := range pairs {
+		number = pair
+	}
+	return number * 3
+}
+
+func (r *Rule) FourOfAKind(dices []int) int {
+	var pairs map[int]int = make(map[int]int)
+	var number int = 0
+	for idx := range dices {
+		if _, exist := pairs[dices[idx]]; exist {
+			pairs[dices[idx]]++
+		} else {
+			pairs[dices[idx]] = 1
+		}
+	}
+
+	// remove item of pairs that value = 1
+	for number := range pairs {
+		if pairs[number] < 4 {
+			delete(pairs, number)
+		}
+	}
+
+	if len(pairs) < 1 {
+		return 0
+	}
+
+	for pair := range pairs {
+		number = pair
+	}
+	return number * 4
+}
