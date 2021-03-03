@@ -21,5 +21,15 @@ func (r *Rule) Once(dices []int) int {
 			count++
 		}
 	}
-	return count
+	return count * 1
+}
+
+func (r *Rule) Twos(dices []int) int {
+	var count int = 0
+	for idx := range dices {
+		if dices[idx] == 2 {
+			count++
+		}
+	}
+	return count * 2
 }
