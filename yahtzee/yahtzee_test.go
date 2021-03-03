@@ -73,3 +73,9 @@ func TestFourOfAKind(t *testing.T) {
 	assert.Equal(t, 8, rule.FourOfAKind([]int{2, 2, 2, 2, 2}))
 	assert.Equal(t, 0, rule.FourOfAKind([]int{2, 2, 2, 5, 5}))
 }
+
+func TestSmallStraight(t *testing.T) {
+	var rule *Rule = &Rule{}
+	assert.Equal(t, 15, rule.SmallStraight([]int{1, 2, 3, 4, 5}))
+	assert.Equal(t, 0, rule.SmallStraight([]int{2, 3, 4, 5, 6}))
+}

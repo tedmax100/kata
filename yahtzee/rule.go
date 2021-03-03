@@ -157,3 +157,17 @@ func (r *Rule) FourOfAKind(dices []int) int {
 	}
 	return number * 4
 }
+
+func (r *Rule) SmallStraight(dices []int) int {
+	var set map[int]int = make(map[int]int)
+	for idx := range dices {
+		set[dices[idx]] = 1
+	}
+	if len(set) < 5 {
+		return 0
+	}
+	if set[1] == 0 || set[5] == 0 {
+		return 0
+	}
+	return 15
+}
