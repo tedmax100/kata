@@ -6,5 +6,5 @@ Todo :
 - [x] Tennis
 - [x] KentBeck-Currency
 - [x] Bowling
-- [ ] Yatzy
+- [x] Yathzee : Need to Refactor
 - [ ] MineSweeper
