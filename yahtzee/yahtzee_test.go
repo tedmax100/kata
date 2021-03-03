@@ -53,3 +53,9 @@ func TestOnePair(t *testing.T) {
 	assert.Equal(t, 6, rule.OnePair([]int{3, 4, 3, 5, 6}))
 	assert.Equal(t, 10, rule.OnePair([]int{5, 3, 3, 3, 5}))
 }
+
+func TestTwoPairs(t *testing.T) {
+	var rule *Rule = &Rule{}
+	assert.Equal(t, 0, rule.TwoPairs([]int{1, 1, 2, 1, 1}))
+	assert.Equal(t, 16, rule.TwoPairs([]int{3, 3, 5, 4, 5}))
+}

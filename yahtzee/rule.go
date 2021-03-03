@@ -73,3 +73,31 @@ func (r *Rule) OnePair(dices []int) int {
 	}
 	return maxNum * 2
 }
+
+func (r *Rule) TwoPairs(dices []int) int {
+	var pairs map[int]int = make(map[int]int)
+	var result int = 0
+	for idx := range dices {
+		if _, exist := pairs[dices[idx]]; exist {
+			pairs[dices[idx]]++
+		} else {
+			pairs[dices[idx]] = 1
+		}
+	}
+
+	// remove item of pairs that value = 1
+	for number := range pairs {
+		if pairs[number] == 1 {
+			delete(pairs, number)
+		}
+	}
+
+	if len(pairs) < 2 {
+		return 0
+	}
+
+	for pair := range pairs {
+		result += 2 * pair
+	}
+	return result
+}
