@@ -14,4 +14,5 @@ func NewGame() *Game {
 // 然後就發現...測試不了XDD, 因為是隨機數字;
 // 但想了想,我幹麻把規則跟Game綁在一起呢?
 
-func (g *Game) Chance()
+/* func (g *Game) Chance()
+ */
