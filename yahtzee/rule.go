@@ -13,3 +13,13 @@ func SumRecursive(nums []int) int {
 	}
 	return nums[0] + SumRecursive(nums[1:])
 }
+
+func (r *Rule) Once(dices []int) int {
+	var count int = 0
+	for idx := range dices {
+		if dices[idx] == 1 {
+			count++
+		}
+	}
+	return count
+}
