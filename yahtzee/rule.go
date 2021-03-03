@@ -15,21 +15,26 @@ func SumRecursive(nums []int) int {
 }
 
 func (r *Rule) Once(dices []int) int {
-	var count int = 0
-	for idx := range dices {
-		if dices[idx] == 1 {
-			count++
-		}
-	}
-	return count * 1
+	var targetNum int = 1
+	return r.CountTarget(dices, targetNum) * targetNum
 }
 
 func (r *Rule) Twos(dices []int) int {
+	var targetNum int = 2
+	return r.CountTarget(dices, targetNum) * targetNum
+}
+
+func (r *Rule) Threes(dices []int) int {
+	var targetNum int = 3
+	return r.CountTarget(dices, targetNum) * targetNum
+}
+
+func (r *Rule) CountTarget(nums []int, targetNum int) int {
 	var count int = 0
-	for idx := range dices {
-		if dices[idx] == 2 {
+	for idx := range nums {
+		if nums[idx] == targetNum {
 			count++
 		}
 	}
-	return count * 2
+	return count
 }

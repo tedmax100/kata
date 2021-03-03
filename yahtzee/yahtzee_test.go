@@ -23,3 +23,9 @@ func TestTwos(t *testing.T) {
 	assert.Equal(t, 4, rule.Twos([]int{1, 2, 3, 2, 6}))
 	assert.Equal(t, 10, rule.Twos([]int{2, 2, 2, 2, 2}))
 }
+
+func TestThrees(t *testing.T) {
+	var rule *Rule = &Rule{}
+	assert.Equal(t, 3, rule.Threes([]int{1, 2, 3, 2, 6}))
+	assert.Equal(t, 15, rule.Threes([]int{3, 3, 3, 3, 3}))
+}
