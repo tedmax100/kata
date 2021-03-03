@@ -17,3 +17,9 @@ func TestOnes(t *testing.T) {
 	assert.Equal(t, 1, rule.Once([]int{1, 2, 3, 4, 5}))
 	assert.Equal(t, 0, rule.Once([]int{6, 2, 2, 4, 5}))
 }
+
+func TestTwos(t *testing.T) {
+	var rule *Rule = &Rule{}
+	assert.Equal(t, 4, rule.Twos([]int{1, 2, 3, 2, 6}))
+	assert.Equal(t, 10, rule.Twos([]int{2, 2, 2, 2, 2}))
+}
