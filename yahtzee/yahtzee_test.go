@@ -47,3 +47,9 @@ func TestSixes(t *testing.T) {
 	assert.Equal(t, 6, rule.Sixes([]int{1, 2, 3, 5, 6}))
 	assert.Equal(t, 24, rule.Sixes([]int{3, 6, 6, 6, 6}))
 }
+
+func TestOnePair(t *testing.T) {
+	var rule *Rule = &Rule{}
+	assert.Equal(t, 6, rule.OnePair([]int{3, 4, 3, 5, 6}))
+	assert.Equal(t, 10, rule.OnePair([]int{5, 3, 3, 3, 5}))
+}

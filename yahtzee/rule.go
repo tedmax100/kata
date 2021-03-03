@@ -53,3 +53,23 @@ func (r *Rule) CollectTarget(nums []int, targetNum int) []int {
 	}
 	return collected
 }
+
+func (r *Rule) OnePair(dices []int) int {
+	var pairs map[int]int = make(map[int]int)
+	var maxNum int = 0
+	for idx := range dices {
+		if _, exist := pairs[dices[idx]]; exist {
+			pairs[dices[idx]]++
+			if dices[idx] > maxNum {
+				maxNum = dices[idx]
+			}
+		} else {
+			pairs[dices[idx]] = 1
+		}
+	}
+
+	if maxNum == 0 {
+		return 0
+	}
+	return maxNum * 2
+}
