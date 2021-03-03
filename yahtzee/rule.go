@@ -16,25 +16,40 @@ func SumRecursive(nums []int) int {
 
 func (r *Rule) Once(dices []int) int {
 	var targetNum int = 1
-	return r.CountTarget(dices, targetNum) * targetNum
+	return SumRecursive(r.CollectTarget(dices, targetNum))
 }
 
 func (r *Rule) Twos(dices []int) int {
 	var targetNum int = 2
-	return r.CountTarget(dices, targetNum) * targetNum
+	return SumRecursive(r.CollectTarget(dices, targetNum))
 }
 
 func (r *Rule) Threes(dices []int) int {
 	var targetNum int = 3
-	return r.CountTarget(dices, targetNum) * targetNum
+	return SumRecursive(r.CollectTarget(dices, targetNum))
 }
 
-func (r *Rule) CountTarget(nums []int, targetNum int) int {
-	var count int = 0
+func (r *Rule) Fours(dices []int) int {
+	var targetNum int = 4
+	return SumRecursive(r.CollectTarget(dices, targetNum))
+}
+
+func (r *Rule) Fives(dices []int) int {
+	var targetNum int = 5
+	return SumRecursive(r.CollectTarget(dices, targetNum))
+}
+
+func (r *Rule) Sixes(dices []int) int {
+	var targetNum int = 6
+	return SumRecursive(r.CollectTarget(dices, targetNum))
+}
+
+func (r *Rule) CollectTarget(nums []int, targetNum int) []int {
+	var collected []int = make([]int, 0)
 	for idx := range nums {
 		if nums[idx] == targetNum {
-			count++
+			collected = append(collected, nums[idx])
 		}
 	}
-	return count
+	return collected
 }
