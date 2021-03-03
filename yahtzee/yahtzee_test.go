@@ -92,3 +92,9 @@ func TestFullHouse(t *testing.T) {
 	assert.Equal(t, 0, rule.FullHouse([]int{2, 2, 3, 3, 4}))
 	assert.Equal(t, 0, rule.FullHouse([]int{4, 4, 4, 4, 4}))
 }
+
+func TestYahtzee(t *testing.T) {
+	var rule *Rule = &Rule{}
+	assert.Equal(t, 50, rule.Yahtzee([]int{1, 1, 1, 1, 1}))
+	assert.Equal(t, 0, rule.Yahtzee([]int{2, 2, 3, 3, 4}))
+}

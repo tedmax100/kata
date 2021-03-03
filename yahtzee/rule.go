@@ -216,3 +216,15 @@ func (r *Rule) FullHouse(dices []int) int {
 	}
 	return 0
 }
+
+func (r *Rule) Yahtzee(dices []int) int {
+	var preDice int = dices[0]
+	for idx := range dices {
+		if preDice == dices[idx] {
+			continue
+		}
+		return 0
+	}
+
+	return 50
+}
