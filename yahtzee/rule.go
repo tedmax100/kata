@@ -185,3 +185,34 @@ func (r *Rule) LargeStraight(dices []int) int {
 	}
 	return 20
 }
+
+func (r *Rule) FullHouse(dices []int) int {
+	// 找出 ThreeOfAKind
+	// 再把剩下的元素, 去找OnePair
+	var pairs map[int]int = make(map[int]int)
+	var threOfKindNum, onePairNum int
+	for idx := range dices {
+		if _, exist := pairs[dices[idx]]; exist {
+			pairs[dices[idx]]++
+		} else {
+			pairs[dices[idx]] = 1
+		}
+	}
+
+	if len(pairs) < 2 {
+		return 0
+	}
+
+	for pair := range pairs {
+		if pairs[pair] == 2 {
+			onePairNum = pair
+		}
+		if pairs[pair] == 3 {
+			threOfKindNum = pair
+		}
+	}
+	if threOfKindNum > 0 && onePairNum > 0 {
+		return threOfKindNum*3 + onePairNum*2
+	}
+	return 0
+}

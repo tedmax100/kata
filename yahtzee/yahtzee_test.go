@@ -86,9 +86,9 @@ func TestLargeStraight(t *testing.T) {
 	assert.Equal(t, 20, rule.LargeStraight([]int{2, 3, 4, 5, 6}))
 }
 
-/* func TestFullHouse(t *testing.T) {
+func TestFullHouse(t *testing.T) {
 	var rule *Rule = &Rule{}
-	assert.Equal(t, 8, rule.LargeStraight([]int{1,1,2,2,2}))
-	assert.Equal(t, 0, rule.LargeStraight([]int{2,2,3,3,4 }))
+	assert.Equal(t, 8, rule.FullHouse([]int{1, 1, 2, 2, 2}))
+	assert.Equal(t, 0, rule.FullHouse([]int{2, 2, 3, 3, 4}))
+	assert.Equal(t, 0, rule.FullHouse([]int{4, 4, 4, 4, 4}))
 }
-*/
