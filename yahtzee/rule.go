@@ -60,100 +60,68 @@ func (r *Rule) OnePair(dices []int) int {
 	for idx := range dices {
 		if _, exist := pairs[dices[idx]]; exist {
 			pairs[dices[idx]]++
-			if dices[idx] > maxNum {
-				maxNum = dices[idx]
-			}
 		} else {
 			pairs[dices[idx]] = 1
 		}
 	}
 
-	if maxNum == 0 {
-		return 0
+	if r.hasPairs(dices, pairs) {
+		for diceNum := range pairs {
+			if pairs[diceNum] > 1 && diceNum > maxNum {
+				maxNum = diceNum
+			}
+		}
+
+		return maxNum * 2
 	}
-	return maxNum * 2
+	return 0
 }
 
 func (r *Rule) TwoPairs(dices []int) int {
 	var pairs map[int]int = make(map[int]int)
 	var result int = 0
-	for idx := range dices {
-		if _, exist := pairs[dices[idx]]; exist {
-			pairs[dices[idx]]++
-		} else {
-			pairs[dices[idx]] = 1
+	pairs = NumberCollactor(dices)
+	var pairCount int = 0
+	if r.hasPairs(dices, pairs) {
+		for diceNum := range pairs {
+			if pairs[diceNum] > 1 {
+				pairCount++
+				result += 2 * diceNum
+			}
+
+		}
+		if pairCount == 2 {
+			return result
 		}
 	}
-
-	// remove item of pairs that value = 1
-	for number := range pairs {
-		if pairs[number] == 1 {
-			delete(pairs, number)
-		}
-	}
-
-	if len(pairs) < 2 {
-		return 0
-	}
-
-	for pair := range pairs {
-		result += 2 * pair
-	}
-	return result
+	return 0
 }
 
 func (r *Rule) ThreeOfAKind(dices []int) int {
 	var pairs map[int]int = make(map[int]int)
-	var number int = 0
-	for idx := range dices {
-		if _, exist := pairs[dices[idx]]; exist {
-			pairs[dices[idx]]++
-		} else {
-			pairs[dices[idx]] = 1
+	pairs = NumberCollactor(dices)
+
+	if r.hasPairs(dices, pairs) {
+		for diceNum := range pairs {
+			if pairs[diceNum] > 2 {
+				return diceNum * 3
+			}
 		}
 	}
-
-	// remove item of pairs that value = 1
-	for number := range pairs {
-		if pairs[number] < 3 {
-			delete(pairs, number)
-		}
-	}
-
-	if len(pairs) < 1 {
-		return 0
-	}
-
-	for pair := range pairs {
-		number = pair
-	}
-	return number * 3
+	return 0
 }
 
 func (r *Rule) FourOfAKind(dices []int) int {
 	var pairs map[int]int = make(map[int]int)
 	var number int = 0
-	for idx := range dices {
-		if _, exist := pairs[dices[idx]]; exist {
-			pairs[dices[idx]]++
-		} else {
-			pairs[dices[idx]] = 1
+	pairs = NumberCollactor(dices)
+
+	if r.hasPairs(dices, pairs) {
+		for diceNum := range pairs {
+			if pairs[diceNum] > 3 {
+				return diceNum * 4
+			}
 		}
-	}
-
-	// remove item of pairs that value = 1
-	for number := range pairs {
-		if pairs[number] < 4 {
-			delete(pairs, number)
-		}
-	}
-
-	if len(pairs) < 1 {
-		return 0
-	}
-
-	for pair := range pairs {
-		number = pair
 	}
 	return number * 4
 }
@@ -191,24 +159,17 @@ func (r *Rule) FullHouse(dices []int) int {
 	// 再把剩下的元素, 去找OnePair
 	var pairs map[int]int = make(map[int]int)
 	var threOfKindNum, onePairNum int
-	for idx := range dices {
-		if _, exist := pairs[dices[idx]]; exist {
-			pairs[dices[idx]]++
-		} else {
-			pairs[dices[idx]] = 1
-		}
-	}
+	// 將dice做點數上的分堆
+	pairs = NumberCollactor(dices)
 
-	if len(pairs) < 2 {
-		return 0
-	}
-
-	for pair := range pairs {
-		if pairs[pair] == 2 {
-			onePairNum = pair
-		}
-		if pairs[pair] == 3 {
-			threOfKindNum = pair
+	if r.hasPairs(dices, pairs) {
+		for diceNum := range pairs {
+			if pairs[diceNum] == 2 {
+				onePairNum = diceNum
+			}
+			if pairs[diceNum] == 3 {
+				threOfKindNum = diceNum
+			}
 		}
 	}
 	if threOfKindNum > 0 && onePairNum > 0 {
@@ -227,4 +188,24 @@ func (r *Rule) Yahtzee(dices []int) int {
 	}
 
 	return 50
+}
+
+// NumberCollactor : 將numbers做數字上的分堆整理
+func NumberCollactor(numbers []int) map[int]int {
+	var pairs map[int]int = make(map[int]int)
+
+	for idx := range numbers {
+		if _, exist := pairs[numbers[idx]]; exist {
+			pairs[numbers[idx]]++
+		} else {
+			pairs[numbers[idx]] = 1
+		}
+	}
+
+	return pairs
+}
+
+// hasPairs : check length of dices is large than length of pairs
+func (r *Rule) hasPairs(dices []int, pairs map[int]int) bool {
+	return len(dices) > len(pairs)
 }
